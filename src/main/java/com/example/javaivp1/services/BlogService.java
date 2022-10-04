@@ -1,6 +1,5 @@
 package com.example.javaivp1.services;
 
-
 import com.example.javaivp1.exception.NotFoundException;
 import com.example.javaivp1.models.BlogPost;
 import com.example.javaivp1.repository.PostRepo;
@@ -16,22 +15,25 @@ public class BlogService implements IBlogPost {
     @Autowired
     private PostRepo repo;
 
-
     @Override
     public List<BlogPost> getAll() {
         return repo.getAll();
     }
 
-
     @Override
     public Optional<BlogPost> getById(String id) {
-      Optional<BlogPost> blogpost = repo.getById(id);
-      System.out.println(blogpost);
+        Optional<BlogPost> blogpost = repo.getById(id);
+        System.out.println(blogpost);
 
-      if (blogpost.isEmpty()) {
-        throw new NotFoundException(id + " Não encontrado");
-      }
+        if (blogpost.isEmpty()) {
+            throw new NotFoundException(id + " Não encontrado");
+        }
 
-      return blogpost;
+        return blogpost;
+    }
+
+    @Override
+    public void create(BlogPost blogpost) {
+        repo.addPost(blogpost);
     }
 }
