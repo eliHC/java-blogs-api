@@ -24,15 +24,17 @@ public class BlogPostController {
     private IBlogPost service;
 
     @GetMapping
-    public ResponseEntity<List<BlogPost>> getAll() {
-        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
+    @ResponseStatus(HttpStatus.OK)
+    public List<BlogPost> getAll() {
+        return service.getAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<BlogPost>> getById(@PathVariable String id) {
+    @ResponseStatus(HttpStatus.OK)
+    public Optional<BlogPost> getById(@PathVariable String id) {
         Optional<BlogPost> blogpost = service.getById(id);
 
-        return new ResponseEntity<>(blogpost, HttpStatus.OK);
+        return blogpost;
     }
 
     @PostMapping
