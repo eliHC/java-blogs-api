@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BlogService implements IBlogPost {
@@ -18,5 +19,11 @@ public class BlogService implements IBlogPost {
     @Override
     public List<BlogPost> getAll() {
         return repo.getAll();
+    }
+
+
+    @Override
+    public Optional<BlogPost> getById(int id) {
+      return repo.getById(id);
     }
 }
