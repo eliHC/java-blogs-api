@@ -27,14 +27,15 @@ public class PostRepo {
         return posts;
     }
 
-    public Optional<BlogPost> getById(int id) {
+    public Optional<BlogPost> getById(String id) {
         List<BlogPost> posts = null;
 
         try {
             posts = Arrays.asList(mapper.readValue(new File(linkFile), BlogPost[].class));
+            int convertedId = Integer.parseInt(id);
 
             for (BlogPost blogpost : posts) {
-                if (blogpost.getId() == id) {
+                if (blogpost.getId() == convertedId) {
                     return Optional.of(blogpost);
                 }
             }

@@ -28,7 +28,7 @@ public class BlogPostController {
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<BlogPost>> getById(@PathVariable int id) {
+    public ResponseEntity<Optional<BlogPost>> getById(@PathVariable String id) {
       Optional<BlogPost> blogpost = service.getById(id);
 
       return new ResponseEntity<>(blogpost, HttpStatus.CREATED);

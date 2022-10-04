@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface IBlogPost {
     List<BlogPost> getAll();
 
-    Optional<BlogPost> getById(int id);
+    Optional<BlogPost> getById(String id);
 }
